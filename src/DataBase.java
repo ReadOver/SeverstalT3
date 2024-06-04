@@ -206,24 +206,7 @@ public class DataBase {
     }
 
 <<<<<<< HEAD
-   public void setTestDates()throws SQLException {
 
-       // Создание запроса на проверку наличия данных
-       PreparedStatement statement = connection.prepareStatement("SELECT COUNT(*) FROM Product");
-       ResultSet resultSet = statement.executeQuery();
-
-       if (resultSet.next()) {
-           int count = resultSet.getInt(1);
-           if (count > 0) {
-               // Данные уже есть в таблице
-           } else {
-               // Добавляем данные
-               statement = connection.prepareStatement("SELECT COUNT(*) FROM Product");
-           }
-       }
-
-       connection.close();
-   }
 =======
     /**
      *  Тестовые методы( checkTestSupplier,setTestProduct,setTestSupplier) для загрузочных данных
