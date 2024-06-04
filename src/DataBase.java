@@ -4,14 +4,6 @@ import java.util.List;
 
 public class DataBase {
 
-<<<<<<< HEAD
-    // Заголовки столбцов
-//    public static Object[] columnsHeader = new String[] {"ID сотрудника","Имя", "Фамилия",
-//            "Должность","Заработная плата","ID автосалона"};
-
-
-=======
->>>>>>> 7141239 (Initial commit)
     private Connection connection;
     private Statement statement;
     private final String DB_URL = "jdbc:postgresql://localhost:5432/severstal";
@@ -42,13 +34,7 @@ public class DataBase {
                         " start_date DATE NOT NULL,"+
                         " end_date DATE NOT NULL);");
 
-<<<<<<< HEAD
-                //SELECT p.start_date|| ' - ' || p.end_date as period, pr.name,pp.price FROM PricePeriod p INNER JOIN
-                //PriceProduct pp ON p.id = pp.price_period_id INNER JOIN product pr ON
-                //pp.product_id = pr.id WHERE p.supplier_id=1;
-=======
 
->>>>>>> 7141239 (Initial commit)
                 statement.executeUpdate("CREATE TABLE IF NOT EXISTS PriceProduct ( " +
                         "id SERIAL PRIMARY KEY, " +
                         "price_period_id INTEGER NOT NULL REFERENCES PricePeriod(id), " +
@@ -61,17 +47,7 @@ public class DataBase {
                         "price_period_id INTEGER REFERENCES Supplier(id), " +
                         " product_id INTEGER NOT NULL REFERENCES product(id),"+
                         "weight DECIMAL(10, 2) NOT NULL);");
-<<<<<<< HEAD
-//
-//                statement.executeUpdate("CREATE TABLE IF NOT EXISTS TransactionList ( " +
-//                        "id SERIAL PRIMARY KEY, " +
-//                        "transaction_id INTEGER REFERENCES Transaction(id), " +
-//                        "fruit_id INTEGER REFERENCES Fruit(id), " +
-//                        "quantity INTEGER, " +
-//                        "price DECIMAL(10, 2));");
-=======
 
->>>>>>> 7141239 (Initial commit)
 
             }catch (SQLException e) {
                 e.printStackTrace();
@@ -118,15 +94,6 @@ public class DataBase {
             e.printStackTrace();
 
 
-<<<<<<< HEAD
-//            //Выполняем запрос к БД
-//            preparedStatement.execute();
-//
-//            //Закрываем соединение
-//            preparedStatement.close();
-
-=======
->>>>>>> 7141239 (Initial commit)
         }
     }
 
@@ -205,9 +172,7 @@ public class DataBase {
 
     }
 
-<<<<<<< HEAD
 
-=======
     /**
      *  Тестовые методы( checkTestSupplier,setTestProduct,setTestSupplier) для загрузочных данных
      */
@@ -269,7 +234,6 @@ public class DataBase {
         return supplierNames;
     }
 
->>>>>>> 7141239 (Initial commit)
 
     //получаем Дату, название, вес, цена для таблицы поставок поставщиков за определенный срок
     public List<DBHelper> getSortDateNameWeightPrice(int supplierId,Object dateStart,Object dateEnd){
