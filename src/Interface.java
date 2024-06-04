@@ -37,6 +37,12 @@ public class Interface extends JFrame {
 
     private int idPeriod; //id таблицы PricePeriod
 
+<<<<<<< HEAD
+=======
+    private String[] supplierNames=new String[3];
+    private String[] productNames=new String[4];
+
+>>>>>>> 7141239 (Initial commit)
     public Interface() { ///!!!!заменить потом на Interface
         frame.setSize(1000, 600);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -51,6 +57,7 @@ public class Interface extends JFrame {
 
         frame.add(panel1);
 
+<<<<<<< HEAD
         // Окно 1
         activity1();
 
@@ -76,13 +83,52 @@ public class Interface extends JFrame {
 //        });
 
         frame.setVisible(true);
+=======
+        //устанавливаем тестовые значения продуктов и поставщиков
+        try {
+            if (dataBase.checkTestSupplier()==0){ //если таблица не заполнена
+                dataBase.setTestSupplier();
+                dataBase.setTestProduct();
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        //получаем название поставщиков и товаров
+        try {
+            supplierNames= dataBase.getSupplier();
+            productNames= dataBase.getProduct();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        System.out.printf(supplierNames[0]);
+
+
+        // Окно 1
+        activity1();
+
+
+
+
+        frame.setVisible(true);
+
+
+>>>>>>> 7141239 (Initial commit)
     }
 
     private void activity1(){
 
+<<<<<<< HEAD
         panel1.setLayout(null); // Установка layout на null для возможности управления местоположением компонентов
 
 
+=======
+
+        panel1.setLayout(null); // Установка layout на null для возможности управления местоположением компонентов
+
+
+
+>>>>>>> 7141239 (Initial commit)
         JButton button1 = new JButton("Цены на товары");
         button1.setBounds(10, 10, 200, 25);
         panel1.add(button1);
@@ -98,9 +144,15 @@ public class Interface extends JFrame {
          *  Реализации части добавления поставки
          */
 
+<<<<<<< HEAD
         String[] suppliers = {"Supplier 1", "Supplier 2", "Supplier 3"};
         JComboBox<String> comboBox = new JComboBox<>(suppliers);
         comboBox.setBounds(10,50,100,25);
+=======
+        String[] suppliers = {supplierNames[0], supplierNames[1],supplierNames[2]};
+        JComboBox<String> comboBox = new JComboBox<>(suppliers);
+        comboBox.setBounds(10,50,110,25);
+>>>>>>> 7141239 (Initial commit)
         panel1.add(comboBox);
 
         JDateChooser dateChooser = new JDateChooser();
@@ -109,6 +161,7 @@ public class Interface extends JFrame {
         dateChooser.setBounds(140, 50, 110, 30);
         panel1.add(dateChooser);
 
+<<<<<<< HEAD
         Label labelProduct1 = new Label("Груша Спелая зелеёная");
         labelProduct1.setBounds(50, 100, 150, 15);
         panel1.add(labelProduct1);
@@ -122,28 +175,59 @@ public class Interface extends JFrame {
         panel1.add(labelProduct3);
 
         Label labelProduct4 = new Label("Яблоко ббб");
+=======
+        Label labelProduct1 = new Label(productNames[0]);
+        labelProduct1.setBounds(50, 100, 150, 15);
+        panel1.add(labelProduct1);
+
+        Label labelProduct2 = new Label(productNames[1]);
+        labelProduct2.setBounds(250, 100, 150, 15);
+        panel1.add(labelProduct2);
+
+        Label labelProduct3 = new Label(productNames[2]);
+        labelProduct3.setBounds(450, 100, 150, 15);
+        panel1.add(labelProduct3);
+
+        Label labelProduct4 = new Label(productNames[3]);
+>>>>>>> 7141239 (Initial commit)
         labelProduct4.setBounds(650, 100, 150, 15);
         panel1.add(labelProduct4);
 
         PriceField textField1 = new PriceField();
         textField1.setBounds(50, 120, 80, 20);
         textField1.setEditable(false);
+<<<<<<< HEAD
+=======
+        textField1.setToolTipText("Вес");
+>>>>>>> 7141239 (Initial commit)
         panel1.add(textField1);
 
 
         PriceField textField2 = new PriceField();
         textField2.setBounds(250, 120, 80, 20);
         textField2.setEditable(false);
+<<<<<<< HEAD
+=======
+        textField2.setToolTipText("Вес");
+>>>>>>> 7141239 (Initial commit)
         panel1.add(textField2);
 
         PriceField textField3 = new PriceField();
         textField3.setBounds(450, 120, 80, 20);
         textField3.setEditable(false);
+<<<<<<< HEAD
+=======
+        textField3.setToolTipText("Вес");
+>>>>>>> 7141239 (Initial commit)
         panel1.add(textField3);
 
         PriceField textField4 = new PriceField();
         textField4.setBounds(650, 120, 80, 20);
         textField4.setEditable(false);
+<<<<<<< HEAD
+=======
+        textField4.setToolTipText("Вес");
+>>>>>>> 7141239 (Initial commit)
         panel1.add(textField4);
 
 
@@ -157,6 +241,7 @@ public class Interface extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 textField1.setEditable(false);
                 textField1.setText("");
+<<<<<<< HEAD
                 labelProduct1.setText("временно");
                 textField2.setEditable(false);
                 textField2.setText("");
@@ -167,6 +252,18 @@ public class Interface extends JFrame {
                 textField4.setEditable(false);
                 textField4.setText("");
                 labelProduct4.setText("временно");
+=======
+                labelProduct1.setText(productNames[0]);
+                textField2.setEditable(false);
+                textField2.setText("");
+                labelProduct2.setText(productNames[1]);
+                textField3.setEditable(false);
+                textField3.setText("");
+                labelProduct3.setText(productNames[2]);
+                textField4.setEditable(false);
+                textField4.setText("");
+                labelProduct4.setText(productNames[3]);
+>>>>>>> 7141239 (Initial commit)
                 button.setVisible(false);
             }
         });
@@ -177,6 +274,7 @@ public class Interface extends JFrame {
             public void propertyChange(PropertyChangeEvent evt) {
                 textField1.setEditable(false);
                 textField1.setText("");
+<<<<<<< HEAD
                 labelProduct1.setText("временно");
                 textField2.setEditable(false);
                 textField2.setText("");
@@ -187,6 +285,18 @@ public class Interface extends JFrame {
                 textField4.setEditable(false);
                 textField4.setText("");
                 labelProduct4.setText("временно");
+=======
+                labelProduct1.setText(productNames[0]);
+                textField2.setEditable(false);
+                textField2.setText("");
+                labelProduct2.setText(productNames[1]);
+                textField3.setEditable(false);
+                textField3.setText("");
+                labelProduct3.setText(productNames[2]);
+                textField4.setEditable(false);
+                textField4.setText("");
+                labelProduct4.setText(productNames[3]);
+>>>>>>> 7141239 (Initial commit)
                 button.setVisible(false);
 
 
@@ -210,6 +320,7 @@ public class Interface extends JFrame {
                         for (DBHelper product : products) {
                               if (product.getProductId()==1){
                                   textField1.setEditable(true);
+<<<<<<< HEAD
                                   labelProduct1.setText(String.valueOf(product.getPrice()));
                               }
                               else if (product.getProductId()==2){
@@ -223,6 +334,21 @@ public class Interface extends JFrame {
                               else if (product.getProductId()==4){
                                   textField4.setEditable(true);
                                   labelProduct4.setText(String.valueOf(product.getPrice()));
+=======
+                                  labelProduct1.setText(String.valueOf(productNames[0]+": "+ product.getPrice()+"р."));
+                              }
+                              else if (product.getProductId()==2){
+                                  textField2.setEditable(true);
+                                  labelProduct2.setText(String.valueOf(productNames[1]+": "+ product.getPrice()+"р."));
+                              }
+                              else if (product.getProductId()==3){
+                                  textField3.setEditable(true);
+                                  labelProduct3.setText(String.valueOf(productNames[2]+": "+ product.getPrice()+"р."));
+                              }
+                              else if (product.getProductId()==4){
+                                  textField4.setEditable(true);
+                                  labelProduct4.setText(String.valueOf(productNames[3]+": "+ product.getPrice()+"р."));
+>>>>>>> 7141239 (Initial commit)
                               }
                             }
                         }
@@ -351,17 +477,29 @@ public class Interface extends JFrame {
 
 
         scrollPane1.setBounds(0,235,980,300); //достаточно указать размеры для 1-й таблицы
+<<<<<<< HEAD
         tabbedPane.addTab("Поставщик 1", scrollPane1);
+=======
+        tabbedPane.addTab(supplierNames[0], scrollPane1);
+>>>>>>> 7141239 (Initial commit)
 
         DefaultTableModel tableModel2 = new DefaultTableModel(columns, 0);
         JTable table2 = new JTable(tableModel2);
         JScrollPane scrollPane2 = new JScrollPane(table2);
+<<<<<<< HEAD
         tabbedPane.addTab("Поставщик 2", scrollPane2);
+=======
+        tabbedPane.addTab(supplierNames[1], scrollPane2);
+>>>>>>> 7141239 (Initial commit)
 
         DefaultTableModel tableModel3 = new DefaultTableModel(columns, 0);
         JTable table3 = new JTable(tableModel3);
         JScrollPane scrollPane3 = new JScrollPane(table3);
+<<<<<<< HEAD
         tabbedPane.addTab("Поставщик 3", scrollPane3);
+=======
+        tabbedPane.addTab(supplierNames[2], scrollPane3);
+>>>>>>> 7141239 (Initial commit)
 
         tabbedPane.setBounds(0, 235, 980, 300);
 
@@ -448,10 +586,17 @@ public class Interface extends JFrame {
 
 
 
+<<<<<<< HEAD
         String[] suppliers = {"Supplier 1", "Supplier 2", "Supplier 3"};
         JComboBox<String> comboBox = new JComboBox<>(suppliers);
         int supplierID=comboBox.getSelectedIndex() + 1;
         comboBox.setBounds(50,15,100,25);
+=======
+        String[] suppliers = {supplierNames[0], supplierNames[1], supplierNames[2]};
+        JComboBox<String> comboBox = new JComboBox<>(suppliers);
+        int supplierID=comboBox.getSelectedIndex() + 1;
+        comboBox.setBounds(50,15,110,25);
+>>>>>>> 7141239 (Initial commit)
         panel3.add(comboBox);
 
 
@@ -546,6 +691,7 @@ public class Interface extends JFrame {
             }
         });
 
+<<<<<<< HEAD
         Label labelProduct1 = new Label("Груша Спелая зелеёная");
         labelProduct1.setBounds(50, 350, 150, 15);
         panel3.add(labelProduct1);
@@ -559,11 +705,27 @@ public class Interface extends JFrame {
         panel3.add(labelProduct3);
 
         Label labelProduct4 = new Label("Яблоко ббб");
+=======
+        Label labelProduct1 = new Label(productNames[0]);
+        labelProduct1.setBounds(50, 350, 150, 15);
+        panel3.add(labelProduct1);
+
+        Label labelProduct2 = new Label(productNames[1]);
+        labelProduct2.setBounds(250, 350, 150, 15);
+        panel3.add(labelProduct2);
+
+        Label labelProduct3 = new Label(productNames[2]);
+        labelProduct3.setBounds(450, 350, 150, 15);
+        panel3.add(labelProduct3);
+
+        Label labelProduct4 = new Label(productNames[3]);
+>>>>>>> 7141239 (Initial commit)
         labelProduct4.setBounds(650, 350, 150, 15);
         panel3.add(labelProduct4);
 
         PriceField textField1 = new PriceField();
         textField1.setBounds(50, 380, 80, 20);
+<<<<<<< HEAD
         panel3.add(textField1);
 
 
@@ -577,6 +739,25 @@ public class Interface extends JFrame {
 
         TextField textField4 = new TextField();
         textField4.setBounds(650, 380, 80, 20);
+=======
+        textField1.setToolTipText("Цена");
+        panel3.add(textField1);
+
+
+        PriceField textField2 = new PriceField();
+        textField2.setBounds(250, 380, 80, 20);
+        textField2.setToolTipText("Цена");
+        panel3.add(textField2);
+
+        PriceField textField3 = new PriceField();
+        textField3.setBounds(450, 380, 80, 20);
+        textField3.setToolTipText("Цена");
+        panel3.add(textField3);
+
+        PriceField textField4 = new PriceField();
+        textField4.setBounds(650, 380, 80, 20);
+        textField4.setToolTipText("Цена");
+>>>>>>> 7141239 (Initial commit)
         panel3.add(textField4);
 
 
